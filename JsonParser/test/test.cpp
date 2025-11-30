@@ -1,8 +1,7 @@
-#include "../src/Parser.hpp"
+#include "../src/JsonParser/Parser.hpp"
 #include <iostream>
 
 int main(){
-    using std::string_literals::operator""s;
     auto obj = std::make_unique<json_parser::JsonObject>();
     obj->add("number", std::make_unique<json_parser::JsonNumber>(1e3));
     obj->add("string_1", std::make_unique<json_parser::JsonString>());

@@ -2,21 +2,20 @@
 
 namespace json_parser{
     Token::Token(TokenType type_, const std::string& value_) : type(type_){
-        using std::string_literals::operator""s;
         switch(type_){
-            case TokenType::LBRACE: value = "{"s; break;
-            case TokenType::RBRACE: value = "}"s; break;
-            case TokenType::LBRACKET: value = "["s; break;
-            case TokenType::RBRACKET: value = "]"s; break;
-            case TokenType::COLON: value = ":"s; break;
-            case TokenType::COMMA: value = ","s; break;
+            case TokenType::LBRACE: value = "{"; break;
+            case TokenType::RBRACE: value = "}"; break;
+            case TokenType::LBRACKET: value = "["; break;
+            case TokenType::RBRACKET: value = "]"; break;
+            case TokenType::COLON: value = ":"; break;
+            case TokenType::COMMA: value = ","; break;
             case TokenType::STRING: value = value_; break;
-            case TokenType::NUMBER: value = value_ == ""s ? "0"s : value_; break;
-            case TokenType::TRUE: value = "true"s; break;
-            case TokenType::FALSE: value = "false"s; break;
-            case TokenType::NUL: value = "null"s; break;
-            case TokenType::END: value = ""s; break;
-            default: ""s; break;
+            case TokenType::NUMBER: value = value_ == "" ? "0" : value_; break;
+            case TokenType::TRUE: value = "true"; break;
+            case TokenType::FALSE: value = "false"; break;
+            case TokenType::NUL: value = "null"; break;
+            case TokenType::END: value = ""; break;
+            default: ""; break;
         }
     }
 

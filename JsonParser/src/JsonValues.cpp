@@ -15,8 +15,7 @@ namespace json_parser{
 
     JsonBool::JsonBool(bool value_) : value(value_) {}
     std::string JsonBool::to_string() const{
-        using std::string_literals::operator""s;
-        return value ? "true"s : "false"s;
+        return value ? "true" : "false";
     }
     
     std::string JsonNull::to_string() const{
@@ -51,7 +50,7 @@ namespace json_parser{
     std::string JsonArray::to_string() const{
         using std::string_literals::operator""s;
         std::stringstream buffer;
-        buffer << "[";
+        buffer << "["s;
         const size_t buffer_start_size = buffer.str().size();
         for(auto& value : array_list) {
             buffer << value->to_string() << ","s;
