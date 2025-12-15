@@ -72,7 +72,7 @@ namespace json_parser{
         while(true){
             auto curr_value = parse_value();
             assert(curr_value);
-            array.add(move(curr_value));
+            array.push_back(move(curr_value));
             auto comma_token = lex.get_token();
             lex.consume();
             if(comma_token.type == TokenType::RBRACKET)

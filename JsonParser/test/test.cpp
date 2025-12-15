@@ -1,4 +1,4 @@
-#include "../src/JsonParser/Parser.hpp"
+#include "../src/Parser.hpp"
 #include <iostream>
 
 int main(){
@@ -10,8 +10,8 @@ int main(){
     obj->add("bool_false", std::make_unique<json_parser::JsonBool>(false));
     obj->add("null", std::make_unique<json_parser::JsonNull>());
     json_parser::JsonArray array;
-    array.add(std::make_unique<json_parser::JsonNumber>());
-    array.add(move(obj));
+    array.push_back(std::make_unique<json_parser::JsonNumber>());
+    array.push_back(move(obj));
     std::cout << array.to_string() << std::endl;
     
     std::string input = R"([0.000000,{"bool_false": false,"bool_true": true,"null": null,"number": 1000.000000,"string_1": "","string_2": "ciao"}])";

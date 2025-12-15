@@ -3,13 +3,13 @@
 
 namespace json_parser{
     class Parser{
-        Lexer lex;
-
     public:
         Parser(const std::string& input);
-
         std::unique_ptr<JsonValue> parse();
 
+    private:
+        Lexer lex;
+        
     private:
         std::unique_ptr<JsonValue> parse_value();
         JsonObject make_object();

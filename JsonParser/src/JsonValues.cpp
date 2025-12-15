@@ -23,15 +23,14 @@ namespace json_parser{
     }
 
     void JsonObject::add(const std::string& item_name, std::unique_ptr<JsonValue> value){
-        map_list[item_name] = move(value);
+        map_list[item_name] = std::move(value);
     }
 
     std::string JsonObject::to_string() const {
         using std::string_literals::operator""s;
         std::stringstream buffer;
         buffer << "{"s;
-        const size_t buffer_start_size = buffer.str().size();
-        for(auto& [item_name, value] : map_list){
+        for(const auto& [item_name, value] : map_list){
             buffer << "\""s << item_name << "\": "s << value->to_string() << ","s;
         }
         auto tmp = buffer.str();
@@ -43,16 +42,15 @@ namespace json_parser{
         return tmp;
     }
 
-    void JsonArray::add(std::unique_ptr<JsonValue> value){
-        array_list.push_back(move(value));
+    void JsonArray::push_back(std::unique_ptr<JsonValue> value){
+        array_list.push_back(std::move(value));
     }
 
     std::string JsonArray::to_string() const{
         using std::string_literals::operator""s;
         std::stringstream buffer;
         buffer << "["s;
-        const size_t buffer_start_size = buffer.str().size();
-        for(auto& value : array_list) {
+        for(const auto& value : array_list) {
             buffer << value->to_string() << ","s;
         }
         auto tmp = buffer.str();

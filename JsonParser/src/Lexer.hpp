@@ -15,19 +15,18 @@ namespace json_parser{
 
         Token(TokenType type_, const std::string& value_ = std::string{});
     };
-}
-
-namespace json_parser{
-    class Lexer{
-        const std::string& input;
-        size_t pos = 0;
-        size_t prev_pos = 0;
-        
-        public:
+    
+    class Lexer{        
+    public:
         Lexer(const std::string& input_);
         bool eos();
         Token get_token();
         void consume();
+    
+    private:
+        const std::string& input;
+        size_t pos = 0;
+        size_t prev_pos = 0;
 
     private:
         char peek() const;

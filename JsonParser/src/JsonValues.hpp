@@ -1,7 +1,7 @@
 #include <string>
 #include <vector>
 #include <memory>
-#include <map>
+#include <unordered_map>
 
 namespace json_parser{
     class JsonValue{
@@ -37,7 +37,7 @@ namespace json_parser{
     };
 
     class JsonObject : public JsonValue{
-        std::map<std::string, std::unique_ptr<JsonValue>> map_list;
+        std::unordered_map<std::string, std::unique_ptr<JsonValue>> map_list;
     public:
         void add(const std::string& item_name, std::unique_ptr<JsonValue> value);
 
@@ -47,7 +47,7 @@ namespace json_parser{
     class JsonArray : public JsonValue{
         std::vector<std::unique_ptr<JsonValue>> array_list;
     public:
-        void add(std::unique_ptr<JsonValue> value);
+        void push_back(std::unique_ptr<JsonValue> value);
 
         std::string to_string() const override;
     };
